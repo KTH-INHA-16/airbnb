@@ -6,4 +6,12 @@ from . import models
 class ReservationAdmin(admin.ModelAdmin):
     """Reservation admin definition"""
 
-    pass
+    list_display = (
+        "room",
+        "status",
+        "check_in",
+        "check_out",
+        "guest",
+    )
+
+    list_filter = ("status",)

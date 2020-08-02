@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from . import models
+from rooms.models import Room
 
 """decorator"""
+
+
+class RoomInlines(admin.TabularInline):
+
+    model = Room
 
 
 @admin.register(models.User)
@@ -10,12 +16,15 @@ class UserAdmin(UserAdmin):
 
     """ Custom User Admin """
 
+    inlines = (RoomInlines,)
+
     """list_display = ("username", "email", "gender", "language", "currency", "superhost")
     list_filter = (
         "language",
         "currency",
         "superhost",
     )"""
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",

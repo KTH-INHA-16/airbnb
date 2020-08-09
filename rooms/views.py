@@ -14,14 +14,13 @@ class HomeView(ListView):
     """ HomeView Definition"""
 
     model = models.Room
-    paginate_by = 10
+    paginate_by = 12
     ordering = "created"
     paginate_orphans = 5
     context_object_name = "rooms"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["now"] = timezone.now()
         return context
 
     # 수동 -> paginator -> use views

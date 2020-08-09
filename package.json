@@ -1,0 +1,22 @@
+{
+  "name": "air_clone",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KTH-INHA-16/airbnb.git"
+  },
+  "homepage": "https://github.com/KTH-INHA-16/airbnb#readme",
+  "scripts": {
+    "css": "gulp"
+  },
+  "description": "Cloning Airbnb with Python,Django, Tailwind and more...",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^4.14.1",
+    "tailwindcss": "^1.6.2"
+  }
+}

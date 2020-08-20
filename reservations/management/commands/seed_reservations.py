@@ -1,25 +1,22 @@
 import random
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timedelta
 from django.core.management.base import BaseCommand
-from django.contrib.admin.utils import flatten
 from django_seed import Seed
 from reservations import models as reservation_models
 from users import models as user_models
 from rooms import models as room_models
+
 
 NAME = "reservations"
 
 
 class Command(BaseCommand):
 
-    help = f"this command creates {NAME}"
+    help = f"This command creates {NAME}"
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--number",
-            default=1,
-            type=int,
-            help=f"How many {NAME} do you want to create?",
+            "--number", default=2, type=int, help=f"How many {NAME} you want to create"
         )
 
     def handle(self, *args, **options):
@@ -27,8 +24,6 @@ class Command(BaseCommand):
         seeder = Seed.seeder()
         users = user_models.User.objects.all()
         rooms = room_models.Room.objects.all()
-        # limit array [4:10]: 4~10
-
         seeder.add_entity(
             reservation_models.Reservation,
             number,
@@ -41,7 +36,7 @@ class Command(BaseCommand):
                 + timedelta(days=random.randint(3, 25)),
             },
         )
+
         seeder.execute()
 
-        self.stdout.write(self.style.SUCCESS(f"{number} {NAME} Created"))
-
+        self.stdout.write(self.style.SUCCESS(f"{number} {NAME} created!"))

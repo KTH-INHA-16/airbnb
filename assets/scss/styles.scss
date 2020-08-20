@@ -1,6 +1,5 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 .search-box {
   transition: box-shadow 0.2s linear;
@@ -20,8 +19,8 @@
   @apply text-center rounded-sm py-5 font-light text-lg w-full;
 }
 
-.btn-link{
-  @apply text-center rounded-lg py-5 font-light text-lg w-full text-white bg-red-500;
+.btn-link {
+  @apply text-center py-3 rounded-lg font-light text-lg w-full text-white bg-red-500;
 }
 
 input,
@@ -33,64 +32,73 @@ select {
   }
 }
 
-textarea{
+textarea {
   resize: none;
   height: 100px;
 }
 
-select{
+select {
   height: 50px;
 }
 
 form {
   .input {
-    @apply mb-3;
-    &.has_error{
-        input{
-            @apply bg-red-200 border-gray-600;
-            &:focus{
-                @apply border-gray-600;
-            }
+    @apply mb-3 w-full;
+    &.has_error {
+      input {
+        @apply bg-red-200 border-gray-600;
+        &:focus {
+          @apply border-gray-600;
         }
+      }
     }
   }
 }
 
-@keyframes messageFadeIn{
-  0%{
+@keyframes messageFadeIn {
+  0% {
     opacity: 0;
     transform: translateY(-50px);
   }
-  5%{
+  5% {
     opacity: 1;
     transform: translateY(50px);
   }
-  95%{
+  95% {
     opacity: 1;
     transform: translateY(50px);
   }
-  100%{
+  100% {
     opacity: 0;
     transform: translateY(-50px);
   }
 }
 
-.message{
+.message {
   animation: messageFadeIn 5s ease-in-out forwards;
-  &.error{
+  &.error {
     @apply bg-red-600;
   }
-  &.info{
+  &.info {
     @apply bg-blue-500;
   }
-  &.success{
+  &.success {
     @apply bg-green-500;
   }
-  &.warning{
+  &.warning {
     @apply bg-yellow-400;
   }
 }
 
-.border-section{
+.border-section {
   @apply border-b border-gray-400 pb-8 mt-8;
 }
+
+.c-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+}
+
+@tailwind utilities;

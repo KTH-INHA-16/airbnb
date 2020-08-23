@@ -1,5 +1,7 @@
 import os
 import requests
+from django.utils import translation
+from django.http import HttpResponse
 from django.views import View
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import PasswordChangeView
@@ -284,3 +286,10 @@ def switch_hosting(request):
         request.session["is_hosting"] = True
     return redirect(reverse("core:home"))
     # request.session.pop("is_hosting", True)
+
+
+def switch_lang(request):
+    lang = request.GET.get("lang", None)
+    if lang is not None:
+        request.session[translation.LANGUAGE_SESSION_KEY] = lang
+    return HttpResponse(status=200)
